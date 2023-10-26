@@ -1,0 +1,95 @@
+html,
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    background-color: lightblue;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    height: 100%;
+}
+
+.mainContainer {
+    flex-grow: 1;
+    align-self: center;
+    padding-top: 50px;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: darksalmon;
+    border-style: solid;
+    border-color: black;
+    border-radius: 15px;
+    gap: 10px;
+    width: 350px;
+    height: 500px;
+    padding: 20px;
+}
+
+.calculator .screen {
+    text-align: right;
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    border-radius: 15px;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.calculator .screen .upperScreen {
+    box-sizing: border-box;
+    font-size: 25px;
+}
+
+.calculator .screen .lowerScreen {
+    box-sizing: border-box;
+    font-size: 45px;
+}
+
+.keys {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.keys button {
+    flex: 1;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+/* FOOTER */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    font-size: 18px;
+    gap: 10px;
+    padding: 20px;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight: 550;
+    gap: 10px;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+
+.github-icon {
+    width: 30px;
+    height: 30px;
+}
