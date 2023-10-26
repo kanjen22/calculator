@@ -2,7 +2,6 @@ import { operate, isNumber } from './operators.js';
 
 let ans = undefined;
 let calcs = [];
-let last_calc_res = undefined;
 
 const ansScreen = document.querySelector('.ansScreen')
 const upperScreen = document.querySelector('.upperScreen');
@@ -22,41 +21,49 @@ for (let i = 0; i < 10; i++) {
 
 // btn_ac event
 btn_ac.addEventListener('click', (e) => {
+    playClickSound();
     ac();
 })
 
 // btn_del event
 btn_del.addEventListener('click', (e) => {
+    playClickSound();
     del();
 })
 
 // btn_equal event
 btn_equal.addEventListener('click', (e) => {
+    playClickSound();
     equal();
 })
 
 // num_plus
 btn_plus.addEventListener('click', (e) => {
+    playClickSound();
     plus();
 })
 
 // btn_minus
 btn_minus.addEventListener('click', (e) => {
+    playClickSound();
     minus();
 })
 
 // btn_multiply
 btn_multiply.addEventListener('click', (e) => {
+    playClickSound();
     multiply();
 })
 
 // btn_divide
 btn_divide.addEventListener('click', (e) => {
+    playClickSound();
     divide();
 })
 
 // btn_dot
 btn_dot.addEventListener('click', (e) => {
+    playClickSound();
     dot();
 })
 
@@ -64,6 +71,7 @@ btn_dot.addEventListener('click', (e) => {
 for (let key in num_btns) {
     const cur_btn = num_btns[key];
     cur_btn.addEventListener('click', () => {
+        playClickSound();
         if (calcs.length == 1 && calcs[0] == '0') {
             calcs = [cur_btn.textContent];
         } else {
@@ -214,7 +222,7 @@ function calculate(calcs) {
             if (last_res == 'x' || last_res == '/') {
                 const op = res_tmp1.pop(), a = res_tmp1.pop();
                 ans = operate(a, op, last_ops);
-                if (ans === Infinity || ans === -Infinity) {
+                if (ans === Infinity || ans === -Infinity || isNaN(ans)) {
                     alert('You cannot divide by 0, check your calculation!')
                     return Infinity
                 }
@@ -235,7 +243,7 @@ function calculate(calcs) {
         } else {
             const op = res.pop(), a = res.pop();
             ans = operate(a, op, res_tmp2.pop());
-            if (ans === Infinity || ans === -Infinity) {
+            if (ans === Infinity || ans === -Infinity || isNaN(ans)) {
                 alert('You cannot divide by 0, check your calculation!')
                 return Infinity
             }
@@ -243,5 +251,10 @@ function calculate(calcs) {
         }
     }
     return parseFloat(res[res.length - 1].toFixed(3));
+}
+
+function playClickSound() {
+    const clickSound = document.querySelector("#clickSound")
+    clickSound.play()
 }
 
