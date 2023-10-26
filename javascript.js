@@ -187,9 +187,11 @@ function preProcess(calcs) {
             calcs[i] == '-' ||
             calcs[i] == 'x' ||
             calcs[i] == '/') {
+                if (i == 0) numString += calcs[i];
                 processedCalcs.push(parseFloat(numString.split('').reverse().join('')));
                 numString = '';
-                processedCalcs.push(calcs[i]);
+                if (i != 0) processedCalcs.push(calcs[i]);
+                if (i == 0) break;
         } else {
             numString += calcs[i];
         }
@@ -212,7 +214,7 @@ function calculate(calcs) {
             if (last_res == 'x' || last_res == '/') {
                 const op = res_tmp1.pop(), a = res_tmp1.pop();
                 ans = operate(a, op, last_ops);
-                if (ans === Infinity) {
+                if (ans === Infinity || ans === -Infinity) {
                     alert('You cannot divide by 0, check your calculation!')
                     return Infinity
                 }
@@ -233,7 +235,7 @@ function calculate(calcs) {
         } else {
             const op = res.pop(), a = res.pop();
             ans = operate(a, op, res_tmp2.pop());
-            if (ans === Infinity) {
+            if (ans === Infinity || ans === -Infinity) {
                 alert('You cannot divide by 0, check your calculation!')
                 return Infinity
             }
